@@ -1,13 +1,24 @@
+import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { api } from './apiSlice';
+import { UserList } from './GetUsers';
 
-export default function App() {
+function AppWrapper() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <UserList />
+      </View>
   );
+}
+
+export default function App(){
+   return (
+    <ApiProvider api={api}>
+        <AppWrapper/>
+    </ApiProvider>
+   )
 }
 
 const styles = StyleSheet.create({
