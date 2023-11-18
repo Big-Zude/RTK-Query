@@ -13,7 +13,9 @@ import { useGetUsersQuery } from './apiSlice';
 import { CreateUser } from './CreateUser';
 
 export const UserList = () => {
-    const { data, isLoading } = useGetUsersQuery();
+    const query = "React Developer"
+    const { data, isLoading } = useGetUsersQuery(query);
+    console.log("data", JSON.stringify(data))
     const [modalVisible, setModalVisible] = useState(false);
 
     const handleClose = () => {
